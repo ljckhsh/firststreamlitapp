@@ -1,9 +1,4 @@
 import streamlit as st
-
-st.title('이종찬의 첫 스트림릿 앱')
-st.write('이제 시작합니다!!')
-
-import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
