@@ -73,7 +73,7 @@ st.markdown("Developed for quick insights into urinary marker data.")
 # CA19-9 levels by diagnosis
 if st.checkbox("Show CA19-9 levels by diagnosis"):
     st.subheader("CA19-9 Levels by Diagnosis")
-    diagnosis_map = {1: "Healthy", 2: "Benign Disease", 3: "Pancreatic Cancer"}
+    diagnosis_map = {1: "Healthy population", 2: "Benign Diseases", 3: "Pancreatic Cancer"}
     data["diagnosis_label"] = data["diagnosis"].map(diagnosis_map)
     fig, ax = plt.subplots()
     data.boxplot(column="plasma_CA19_9", by="diagnosis_label", ax=ax, grid=False, showfliers=False,
