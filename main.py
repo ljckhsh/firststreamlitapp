@@ -70,6 +70,7 @@ if st.checkbox("Show age distribution by diagnosis"):
     ax.set_xlabel("Age")
     ax.legend()
     st.pyplot(fig)
+    
 
 st.markdown("---")
 st.markdown("Developed for quick insights into urinary marker data.")
