@@ -69,3 +69,20 @@ if st.checkbox("Show age distribution by diagnosis"):
 
 st.markdown("---")
 st.markdown("Developed for quick insights into urinary marker data.")
+
+# CA19-9 levels by diagnosis
+if st.checkbox("Show CA19-9 levels by diagnosis"):
+    st.subheader("CA19-9 Levels by Diagnosis")
+    diagnosis_map = {1: "Healthy", 2: "Benign Disease", 3: "Pancreatic Cancer"}
+    data["diagnosis_label"] = data["diagnosis"].map(diagnosis_map)
+    fig, ax = plt.subplots()
+    data.boxplot(column="plasma_CA19_9", by="diagnosis_label", ax=ax, grid=False, showfliers=False,
+                 boxprops=dict(color="blue"), medianprops=dict(color="red"))
+    ax.set_title("CA19-9 Levels by Diagnosis")
+    ax.set_xlabel("Diagnosis")
+    ax.set_ylabel("CA19-9 Levels")
+    plt.suptitle("")  # Remove default subtitle
+    st.pyplot(fig)
+
+st.markdown("---")
+st.markdown("Developed for quick insights into urinary marker data.")
