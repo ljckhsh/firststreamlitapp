@@ -18,7 +18,7 @@ if data.empty:
     st.stop()
 
 # Streamlit app setup
-st.title("췌장암의 소변 생체표지자의 분석")
+st.title("췌장암에 있어 소변 생체표지자의 분석")
 st.markdown(
     "This app provides an overview and analysis of the urinary marker dataset.")
 
