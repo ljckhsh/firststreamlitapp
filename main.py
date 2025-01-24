@@ -122,14 +122,14 @@ if st.checkbox("Show REG1B levels by diagnosis"):
     else:
         st.error("The required columns ('diagnosis', 'REG1B') are missing in the dataset.")
 
-# REG1B correlation with age
-if st.checkbox("Show correlation curve for REG1B and Patient age"):
-    st.subheader("Correlation Curve: REG1B and age")
+# REG1B correlation with Age
+if st.checkbox("Show correlation curve for REG1B and Age"):
+    st.subheader("Correlation Curve: REG1B and Age")
     if "age" in data.columns and "REG1B" in data.columns:
         fig, ax = plt.subplots()
         sns.regplot(x="age", y="REG1B", data=data, ax=ax, scatter_kws={'alpha':0.5}, line_kws={'color':'red'})
-        ax.set_title("Correlation between REG1B and Patient age")
-        ax.set_xlabel("age")
+        ax.set_title("Correlation between REG1B and Age")
+        ax.set_xlabel("Age")
         ax.set_ylabel("REG1B Levels")
         st.pyplot(fig)
     else:
