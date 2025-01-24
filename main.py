@@ -122,18 +122,18 @@ if st.checkbox("Show REG1B levels by diagnosis"):
     else:
         st.error("The required columns ('diagnosis', 'REG1B') are missing in the dataset.")
 
-# REG1B correlation with patient IDs
-if st.checkbox("Show correlation curve for REG1B and Patient IDs"):
-    st.subheader("Correlation Curve: REG1B and Patient IDs")
-    if "Patient_ID" in data.columns and "REG1B" in data.columns:
+# REG1B correlation with age
+if st.checkbox("Show correlation curve for REG1B and Patient age"):
+    st.subheader("Correlation Curve: REG1B and age")
+    if "age" in data.columns and "REG1B" in data.columns:
         fig, ax = plt.subplots()
-        sns.regplot(x="Patient_ID", y="REG1B", data=data, ax=ax, scatter_kws={'alpha':0.5}, line_kws={'color':'red'})
-        ax.set_title("Correlation between REG1B and Patient IDs")
-        ax.set_xlabel("Patient ID")
+        sns.regplot(x="age", y="REG1B", data=data, ax=ax, scatter_kws={'alpha':0.5}, line_kws={'color':'red'})
+        ax.set_title("Correlation between REG1B and Patient age")
+        ax.set_xlabel("age")
         ax.set_ylabel("REG1B Levels")
         st.pyplot(fig)
     else:
-        st.error("The required columns ('Patient_ID', 'REG1B') are missing in the dataset.")
+        st.error("The required columns ('age', 'REG1B') are missing in the dataset.")
 
 st.markdown("---")
 st.markdown("Developed for quick insights into urinary marker data.")
