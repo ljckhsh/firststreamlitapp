@@ -15,7 +15,7 @@ def load_data():
 data = load_data()
 
 # Streamlit app setup
-st.title("PC Urinary Marker Analysis")
+st.title("Pancreatic Cancer의 Urinary Biomarker 분석")
 st.markdown(
     "This app provides an overview and analysis of the urinary marker dataset.")
 
