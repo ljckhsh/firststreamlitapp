@@ -58,12 +58,15 @@ if st.checkbox("Show correlation heatmap"):
 # Age distribution by diagnosis
 if st.checkbox("Show age distribution by diagnosis"):
     st.subheader("Age Distribution by Diagnosis")
+    diagnosis_map = {1: "Healthy", 2: "Benign Disease", 3: "Pancreatic Cancer"}
+    data["diagnosis_label"] = data["diagnosis"].map(diagnosis_map)
     fig, ax = plt.subplots()
-    for diagnosis, group in data.groupby("diagnosis"):
-        group["age"].plot(kind='kde', ax=ax, label=f"Diagnosis {diagnosis}")
+    data.boxplot(column="age", by="diagnosis_label", ax=ax, grid=False, showfliers=False,
+                 boxprops=dict(color="blue"), medianprops=dict(color="red"))
     ax.set_title("Age Distribution by Diagnosis")
-    ax.set_xlabel("Age")
-    ax.legend()
+    ax.set_xlabel("Diagnosis")
+    ax.set_ylabel("Age")
+    plt.suptitle("")  # Remove default subtitle
     st.pyplot(fig)
     
 
