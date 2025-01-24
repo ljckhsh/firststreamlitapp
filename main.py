@@ -105,5 +105,22 @@ if st.checkbox("Show LYVE1 levels by pancreatic cancer stage"):
     else:
         st.error("The required columns ('diagnosis', 'stage', 'LYVE1') are missing in the dataset.")
 
+# REG1B levels by diagnosis
+if st.checkbox("Show REG1B levels by diagnosis"):
+    st.subheader("REG1B Levels by Diagnosis")
+    if "diagnosis" in data.columns and "REG1B" in data.columns:
+        diagnosis_map = {1: "Healthy", 2: "Benign Disease", 3: "Pancreatic Cancer"}
+        data["diagnosis_label"] = data["diagnosis"].map(diagnosis_map)
+        fig, ax = plt.subplots()
+        data.boxplot(column="REG1B", by="diagnosis_label", ax=ax, grid=False, showfliers=False,
+                     boxprops=dict(color="blue"), medianprops=dict(color="red"))
+        ax.set_title("REG1B Levels by Diagnosis")
+        ax.set_xlabel("Diagnosis")
+        ax.set_ylabel("REG1B Levels")
+        plt.suptitle("")  # Remove default subtitle
+        st.pyplot(fig)
+    else:
+        st.error("The required columns ('diagnosis', 'REG1B') are missing in the dataset.")
+
 st.markdown("---")
 st.markdown("Developed for quick insights into urinary marker data.")
