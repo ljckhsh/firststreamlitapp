@@ -18,7 +18,7 @@ if data.empty:
     st.stop()
 
 # Streamlit app setup
-st.title("췌장암에 있어 소변 생체표지자의 분석")
+st.title("PC Urinary Marker Analysis")
 st.markdown(
     "This app provides an overview and analysis of the urinary marker dataset.")
 
@@ -50,6 +50,19 @@ if selected_column:
     ax.set_title(f"Distribution of {selected_column}")
     ax.set_xlabel(selected_column)
     ax.set_ylabel("Frequency")
+    st.pyplot(fig)
+
+# Correlation heatmap
+if st.checkbox("Show correlation heatmap"):
+    st.subheader("Correlation Matrix")
+    corr_matrix = data.corr()
+    fig, ax = plt.subplots(figsize=(10, 8))
+    cax = ax.matshow(corr_matrix, cmap='coolwarm')
+    plt.colorbar(cax)
+    ax.set_xticks(range(len(corr_matrix.columns)))
+    ax.set_yticks(range(len(corr_matrix.columns)))
+    ax.set_xticklabels(corr_matrix.columns, rotation=90)
+    ax.set_yticklabels(corr_matrix.columns)
     st.pyplot(fig)
 
 # Age distribution by diagnosis
