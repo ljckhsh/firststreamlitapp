@@ -52,19 +52,6 @@ if selected_column:
     ax.set_ylabel("Frequency")
     st.pyplot(fig)
 
-# Correlation heatmap
-if st.checkbox("Show correlation heatmap"):
-    st.subheader("Correlation Matrix")
-    corr_matrix = data.corr()
-    fig, ax = plt.subplots(figsize=(10, 8))
-    cax = ax.matshow(corr_matrix, cmap='coolwarm')
-    plt.colorbar(cax)
-    ax.set_xticks(range(len(corr_matrix.columns)))
-    ax.set_yticks(range(len(corr_matrix.columns)))
-    ax.set_xticklabels(corr_matrix.columns, rotation=90)
-    ax.set_yticklabels(corr_matrix.columns)
-    st.pyplot(fig)
-
 # Age distribution by diagnosis
 if st.checkbox("Show age distribution by diagnosis"):
     st.subheader("Age Distribution by Diagnosis")
