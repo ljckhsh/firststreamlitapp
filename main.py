@@ -89,3 +89,22 @@ if st.checkbox("Show CA19-9 levels by diagnosis"):
 
 st.markdown("---")
 st.markdown("Developed for quick insights into urinary marker data.")
+
+# LYVE1 levels by pancreatic cancer stage
+if st.checkbox("Show LYVE1 levels by pancreatic cancer stage"):
+    st.subheader("LYVE1 Levels by Pancreatic Cancer Stage")
+    cancer_stages = data[data["diagnosis"] == 3]  # Filter for pancreatic cancer patients
+    if "stage" in cancer_stages.columns and "LYVE1" in cancer_stages.columns:
+        fig, ax = plt.subplots()
+        cancer_stages.boxplot(column="LYVE1", by="stage", ax=ax, grid=False, showfliers=False,
+                               boxprops=dict(color="blue"), medianprops=dict(color="red"))
+        ax.set_title("LYVE1 Levels by Stage")
+        ax.set_xlabel("Pancreatic Cancer Stage")
+        ax.set_ylabel("LYVE1 Levels")
+        plt.suptitle("")  # Remove default subtitle
+        st.pyplot(fig)
+    else:
+        st.write("Required columns (stage, LYVE1) are missing in the dataset.")
+
+st.markdown("---")
+st.markdown("Developed for quick insights into urinary marker data.")
